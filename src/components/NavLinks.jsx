@@ -14,7 +14,7 @@ const NavLinks = async () => {
 
   return (
     <nav className="border-t border-gray-200 bg-[#F8FAF9]">
-      <div className="mx-auto flex max-w-6xl items-center gap-8 overflow-x-auto px-4 py-4">
+      <div className="mx-auto flex max-w-7xl items-center gap-8 overflow-x-auto px-4 py-4">
 
         {categories.map((category) => (
           <Link

@@ -13,7 +13,7 @@ const UserInfo = () => {
 
             <Link
                 href="/signup"
-                className="rounded-lg bg-[#05893E] px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-[#047532]"
+                className="btn border-0 rounded-lg bg-[#05893E] px-4 py-2 text-sm font-medium text-white hover:bg-[#047532] shadow-[0_5px_2px_0_#04753280]"
             >
                 সাইন আপ
             </Link>

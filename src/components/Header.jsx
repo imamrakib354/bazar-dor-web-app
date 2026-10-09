@@ -1,6 +1,3 @@
-
-'use client';
-
 import Image from "next/image";
 import Link from "next/link";
 import UserInfo from "./UserInfo";
@@ -14,7 +11,7 @@ const Header = () => {
 
     return (
         <div className="bg-[#F8FAF9]">
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
 
                 <div className="flex items-center gap-2">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#05893E]">

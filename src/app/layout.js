@@ -17,15 +17,19 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="bn"
+      data-theme="light"
       className={`${hindSiliguri.className} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col bg-[#F0F5F0]">
+
         <Header />
 
         <main className="flex-1">
           {children}
         </main>
+
       </body>
+      
     </html>
   );
 }

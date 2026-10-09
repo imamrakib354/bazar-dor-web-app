@@ -1,10 +1,9 @@
-import Image from "next/image";
+import Marque from "@/components/Marque";
 
 export default function Home() {
-  return ( <div>
-    <p>
-      </p>    
-  </div>
-    
-  );
+    return (
+        <main>
+            <Marque />
+        </main>
+    );
 }
