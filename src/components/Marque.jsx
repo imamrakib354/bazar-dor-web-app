@@ -1,53 +1,52 @@
+
 import Link from "next/link";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 
-const Marque = async () => {
-    const res = await fetch(
-        "https://api.api-store.workers.dev/api/bazardor/products"
-    );
-
-    if (!res.ok) {
-        throw new Error("Failed to fetch Products");
-    }
-
-    const products = await res.json();
+const Marque = ({ products }) => {
 
     return (
         <div className="bg-[#FAFCFA]">
             <div className="flex gap-8 overflow-x-auto px-4 py-3">
-                <MarqueeText direction="right" duration={10}  pauseOnHover={true}>
+                <MarqueeText
+                    direction="right"
+                    duration={10}
+                    pauseOnHover={true}
+                >
+                    {products.map((product) => (
+                        <Link
+                            key={product.id}
+                            href={`/product/${product.id}`}
+                            className="mr-10 flex shrink-0 items-center gap-2"
+                        >
+                            <span>{product.image}</span>
 
+                            <span>{product.nameBn}</span>
 
-                {products.map((product) => (
-                    <Link
-                    key={product.id}
-                    href={`/products/${product.id}`}
-                    className="flex shrink-0 items-center gap-2 mr-10"
-                    >
-                        <span>{product.image}</span>
+                            <span>
+                                {product.today.toLocaleString("bn-BD")} টাকা/
+                                {product.unit === "kg" ? "কেজি" : product.unit}
+                            </span>
 
-                        <span>{product.nameBn}</span>
-
-                        <span>
-                            {product.today} টাকা/
-                            {product.unit === "kg" ? "কেজি" : product.unit}
-                        </span>
-
-                        <span
-                            className={
-                                product.change.dir === "up"
-                                ? "text-red-500"
-                                : "text-green-500"
-                            }
+                            <span
+                                className={
+                                    product.change.dir === "up"
+                                        ? "text-red-500"
+                                        : product.change.dir === "down"
+                                            ? "text-green-500"
+                                            : "text-gray-500"
+                                }
                             >
-                            {product.change.dir === "up" ? "▲" : "▼"}{" "}
-                            {product.change.pct}%
-                        </span>
-                    </Link>
-                ))}
+                                {product.change.dir === "up"
+                                    ? "▲"
+                                    : product.change.dir === "down"
+                                        ? "▼"
+                                        : "—"}{" "}
+                                {product.change.pct.toLocaleString("bn-BD")}%
+                            </span>
+                        </Link>
+                    ))}
                 </MarqueeText>
-
             </div>
         </div>
     );

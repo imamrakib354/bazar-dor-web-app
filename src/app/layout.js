@@ -1,4 +1,3 @@
-
 import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";

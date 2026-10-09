@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer className="bg-[#F8FAF9]">
-            <div className="mx-auto flex w-full max-w-7xl items-center justify-between border-t border-gray-200 px-4 py-4 text-[16px]">
+            <div className="mx-auto flex w-full max-w-7xl items-center justify-between border-t border-gray-200 py-4 text-[16px]">
                 <p>
                     বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।
                 </p>
