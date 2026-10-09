@@ -1,9 +1,8 @@
-
 import Link from "next/link";
 
 const NavLinks = async () => {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/categories"
+    "https://api.api-store.workers.dev/api/bazardor/categories"
   );
 
   if (!res.ok) {
@@ -13,7 +12,7 @@ const NavLinks = async () => {
   const categories = await res.json();
 
   return (
-    <nav className="border-t border-gray-200 bg-[#F8FAF9]">
+    <nav className="border-t border-b border-gray-200 bg-[#F8FAF9]">
       <div className="mx-auto flex max-w-7xl items-center gap-8 overflow-x-auto px-4 py-4">
 
         {categories.map((category) => (

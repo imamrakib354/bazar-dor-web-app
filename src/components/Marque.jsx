@@ -4,7 +4,7 @@ import "react-marquee-text/dist/styles.css";
 
 const Marque = async () => {
     const res = await fetch(
-        "https://api.abcz.workers.dev/api/bazardor/products"
+        "https://api.api-store.workers.dev/api/bazardor/products"
     );
 
     if (!res.ok) {
