@@ -9,7 +9,7 @@ const ProfilePage = async () => {
   });
 
   if (!session) {
-    redirect("/signin");
+    redirect("/signin?reason=login-required");
   }
 
   return <ProfileContent />;

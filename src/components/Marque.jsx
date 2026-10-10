@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
@@ -14,8 +13,9 @@ const Marque = ({ products }) => {
   };
 
   return (
-    <div className="bg-[#FAFCFA]">
-      <div className="flex gap-8 overflow-x-auto px-4 py-3">
+    <div className="w-full overflow-hidden bg-[#FAFCFA]">
+      <div className="w-full overflow-hidden px-3 py-3 sm:px-4">
+
         <MarqueeText
           direction="right"
           duration={10}
@@ -25,13 +25,15 @@ const Marque = ({ products }) => {
             <Link
               key={product.id}
               href={`/products/${product.id}`}
-              className="mr-10 flex shrink-0 items-center gap-2"
+              className="mr-6 inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-xs sm:mr-10 sm:text-sm"
             >
               <span>{product.image}</span>
 
-              <span>{product.nameBn}</span>
+              <span className="font-medium text-[#1F2937]">
+                {product.nameBn}
+              </span>
 
-              <span>
+              <span className="text-[#374151]">
                 {product.today.toLocaleString("bn-BD")} টাকা/
                 {unitBn[product.unit] || product.unit}
               </span>
@@ -55,6 +57,7 @@ const Marque = ({ products }) => {
             </Link>
           ))}
         </MarqueeText>
+
       </div>
     </div>
   );

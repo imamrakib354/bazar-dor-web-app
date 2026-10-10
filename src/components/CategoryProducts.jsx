@@ -15,19 +15,17 @@ const CategoryProducts = ({ products }) => {
   }
 
   return (
-    <div>
-
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+    <div className="min-w-0">
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 
         <p className="text-sm text-gray-500">
-          মোট {products.length.toLocaleString("bn-BD")}টি
-          পণ্য দেখানো হচ্ছে
+          মোট {products.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
         </p>
 
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <label
             htmlFor="product-sort"
-            className="text-sm text-gray-500"
+            className="shrink-0 text-sm text-gray-500"
           >
             সাজান:
           </label>
@@ -36,29 +34,30 @@ const CategoryProducts = ({ products }) => {
             id="product-sort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1F2937] outline-none focus:border-[#05893E]"
+            className="min-w-0 max-w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1F2937] outline-none focus:border-[#05893E] focus:ring-1 focus:ring-[#05893E]"
           >
             <option value="default">ডিফল্ট</option>
-            <option value="low">
-              দাম: কম থেকে বেশি
-            </option>
-            <option value="high">
-              দাম: বেশি থেকে কম
-            </option>
+            <option value="low">দাম: কম থেকে বেশি</option>
+            <option value="high">দাম: বেশি থেকে কম</option>
           </select>
         </div>
 
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {sortedProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
-        ))}
-      </div>
-
+      {sortedProducts.length > 0 ? (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {sortedProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-xl border border-gray-200 bg-white px-4 py-10 text-center text-sm text-gray-500">
+          কোনো পণ্য পাওয়া যায়নি।
+        </div>
+      )}
     </div>
   );
 };

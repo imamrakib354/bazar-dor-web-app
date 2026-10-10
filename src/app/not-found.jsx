@@ -1,30 +1,32 @@
-
 import Link from "next/link";
 
 const NotFound = () => {
   return (
-    <div className="mx-auto flex min-h-[60vh] max-w-7xl flex-col items-center justify-center px-4 text-center">
+    <section className="flex min-h-[60vh] items-center justify-center bg-[#F0F5F0] px-4 py-16">
 
-      <h1 className="mb-3 text-7xl font-bold text-[#05893E]">
-        ৪০৪
-      </h1>
+      <div className="mx-auto max-w-xl text-center">
 
-      <h2 className="mb-3 text-2xl font-bold text-[#1F2937]">
-        কোনো তথ্য পাওয়া যায়নি
-      </h2>
+        <h1 className="mb-4 text-6xl font-bold text-[#05893E] sm:text-7xl md:text-8xl">
+          ৪০৪
+        </h1>
 
-      <p className="mb-6 text-gray-500">
-        আপনার খোঁজা পেজ বা পণ্যটি পাওয়া যায়নি।
-      </p>
+        <h2 className="mb-3 text-xl font-bold text-[#1F2937] sm:text-2xl">
+          কোনো তথ্য পাওয়া যায়নি
+        </h2>
 
-      <Link
-        href="/"
-        className="rounded-lg bg-[#05893E] px-6 py-3 font-medium text-white transition-colors hover:bg-[#047532]"
-      >
-        হোম পেজে ফিরে যান
-      </Link>
+        <p className="mb-7 text-sm leading-7 text-gray-500 sm:text-base">
+          আপনার খোঁজা পেজ বা পণ্যটি পাওয়া যায়নি।
+        </p>
 
-    </div>
+        <Link
+          href="/"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#05893E] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#047532] sm:text-base"
+        >
+          হোম পেজে ফিরে যান
+        </Link>
+
+      </div>
+    </section>
   );
 };
 

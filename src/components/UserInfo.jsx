@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Dropdown } from "@heroui/react";
 import { ChevronDown, LogOut, UserRound } from "lucide-react";
+import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 
 const UserInfo = () => {
@@ -14,7 +15,6 @@ const UserInfo = () => {
 
   const [failedImage, setFailedImage] = useState(null);
   const [isSigningOut, setIsSigningOut] = useState(false);
-  const [signOutError, setSignOutError] = useState("");
 
   const user = session?.user;
 
@@ -25,24 +25,23 @@ const UserInfo = () => {
     user?.name?.trim().charAt(0).toUpperCase() || "U";
 
   const handleSignOut = async () => {
-    setSignOutError("");
     setIsSigningOut(true);
 
     try {
       const { error } = await authClient.signOut();
 
       if (error) {
-        setSignOutError(
-          error.message || "সাইন আউট করা যায়নি।"
-        );
+        toast.error(error.message || "সাইন আউট করা যায়নি।");
         return;
       }
+
+      toast.success("সফলভাবে সাইন আউট হয়েছে।");
 
       router.push("/");
       router.refresh();
     } catch (error) {
       console.error("Sign out failed:", error);
-      setSignOutError("সাইন আউট করা যায়নি।");
+      toast.error("সাইন আউট করা যায়নি। আবার চেষ্টা করুন।");
     } finally {
       setIsSigningOut(false);
     }
@@ -50,23 +49,23 @@ const UserInfo = () => {
 
   if (isPending) {
     return (
-      <div className="h-9 w-24 animate-pulse rounded-lg bg-gray-200" />
+      <div className="h-9 w-16 animate-pulse rounded-lg bg-gray-200 sm:w-24" />
     );
   }
 
   if (!user) {
     return (
-      <div className="flex items-center gap-3 text-sm">
+      <div className="flex shrink-0 items-center gap-2 text-xs sm:gap-3 sm:text-sm">
         <Link
           href="/signin"
-          className="font-medium text-[#1F2937] hover:text-[#05893E]"
+          className="whitespace-nowrap font-medium text-[#1F2937] hover:text-[#05893E]"
         >
           সাইন ইন
         </Link>
 
         <Link
           href="/signup"
-          className="rounded-lg bg-[#05893E] px-4 py-2 font-medium text-white hover:bg-[#047532]"
+          className="whitespace-nowrap rounded-lg bg-[#05893E] px-3 py-2 font-medium text-white hover:bg-[#047532] sm:px-4"
         >
           সাইন আপ
         </Link>
@@ -76,30 +75,30 @@ const UserInfo = () => {
 
   return (
     <Dropdown>
-      <Dropdown.Trigger className="flex items-center gap-2 rounded-lg bg-transparent px-2 py-1">
+      <Dropdown.Trigger className="flex max-w-full items-center gap-1.5 rounded-lg bg-transparent px-1 py-1 sm:gap-2 sm:px-2">
         {showImage ? (
           <img
             src={user.image}
             alt={user.name || "User"}
             onError={() => setFailedImage(user.image)}
-            className="h-9 w-9 shrink-0 rounded-full object-cover"
+            className="h-8 w-8 shrink-0 rounded-full object-cover sm:h-9 sm:w-9"
           />
         ) : (
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E2F2E7] font-semibold text-[#05893E]">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E2F2E7] font-semibold text-[#05893E] sm:h-9 sm:w-9">
             {firstLetter}
           </span>
         )}
 
-        <span className="max-w-28 truncate text-sm font-medium text-[#1F2937]">
+        <span className="hidden max-w-24 truncate text-sm font-medium text-[#1F2937] sm:inline md:max-w-28">
           {user.name}
         </span>
 
-        <ChevronDown size={14} className="shrink-0" />
+        <ChevronDown size={14} className="shrink-0 text-[#374151]" />
       </Dropdown.Trigger>
 
       <Dropdown.Popover
         placement="bottom end"
-        className="w-60 rounded-xl border border-gray-200 bg-white p-2 shadow-lg"
+        className="w-60 max-w-[calc(100vw-24px)] rounded-xl border border-gray-200 bg-white p-2 shadow-lg sm:w-64"
       >
         <div className="border-b border-gray-100 px-3 py-2">
           <p className="truncate text-sm font-semibold text-[#1F2937]">
@@ -118,7 +117,7 @@ const UserInfo = () => {
               router.push("/profile");
             }
 
-            if (key === "signout") {
+            if (key === "signout" && !isSigningOut) {
               handleSignOut();
             }
           }}
@@ -144,12 +143,6 @@ const UserInfo = () => {
             </span>
           </Dropdown.Item>
         </Dropdown.Menu>
-
-        {signOutError && (
-          <p role="alert" className="px-3 py-2 text-xs text-red-600">
-            {signOutError}
-          </p>
-        )}
       </Dropdown.Popover>
     </Dropdown>
   );

@@ -1,4 +1,3 @@
-
 import Banner from "@/components/Banner";
 import Marque from "@/components/Marque";
 import ProductSection from "@/components/ProductSection";
@@ -30,7 +29,7 @@ const Home = async () => {
 
       <Banner />
 
-      <div className="mx-auto max-w-7xl px-4 py-12">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12">
 
         <ProductSection
           title={
@@ -52,12 +51,13 @@ const Home = async () => {
           products={fallers}
         />
 
-        <ProductSection
-          title="সব পণ্য"
-          subtitle="বাজারে পণ্যের দাম এক নজরে"
-          products={products}
-          id="সব-পণ্য"
-        />
+        <div id="সব-পণ্য" className="scroll-mt-6">
+          <ProductSection
+            title="সব পণ্য"
+            subtitle="বাজারে পণ্যের দাম এক নজরে"
+            products={products}
+          />
+        </div>
 
       </div>
     </>

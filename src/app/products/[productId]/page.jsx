@@ -1,4 +1,3 @@
-
 import { notFound, redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
@@ -8,15 +7,16 @@ import PriceSummary from "@/components/PriceSummary";
 import MarketPriceTable from "@/components/MarketPriceTable";
 
 const ProductDetails = async ({ params }) => {
-
+  // Check authentication before displaying product details
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
   if (!session) {
-    redirect("/signin");
+    redirect("/signin?reason=login-required");
   }
 
+  // Get ID from /products/[productId]
   const { productId } = await params;
 
   const res = await fetch(
@@ -38,12 +38,12 @@ const ProductDetails = async ({ params }) => {
   }
 
   return (
-    <div className="bg-[#F0F5F0] px-4 py-8">
+    <div className="bg-[#F0F5F0] px-4 py-5 sm:py-8">
       <div className="mx-auto max-w-7xl">
 
         <ProductSummary product={product} />
 
-        <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6">
+        <div className="min-w-0 rounded-2xl border border-gray-200 bg-white p-4 sm:p-6">
 
           <PriceSummary
             markets={product.markets}

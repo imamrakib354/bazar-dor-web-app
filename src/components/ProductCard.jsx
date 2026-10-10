@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 const ProductCard = ({ product }) => {
@@ -17,16 +16,16 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="block rounded-xl border border-gray-200 bg-white p-4 transition-all hover:-translate-y-1 hover:shadow-md hover:border-[#05893E]"
+      className="block min-w-0 rounded-xl border border-gray-200 bg-white p-4 transition-all hover:-translate-y-1 hover:border-[#05893E] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#05893E]"
     >
-      <div className="mb-5 flex items-center gap-3">
+      <div className="mb-5 flex min-w-0 items-center gap-3">
 
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#F1F6F2] text-2xl">
           {product.image}
         </div>
 
-        <div>
-          <h3 className="font-semibold text-[#1F2937]">
+        <div className="min-w-0">
+          <h3 className="wrap-break-word font-semibold text-[#1F2937]">
             {product.nameBn}
           </h3>
 
@@ -34,10 +33,9 @@ const ProductCard = ({ product }) => {
             প্রতি {unitBn[product.unit] || product.unit}
           </p>
         </div>
-
       </div>
 
-      <div className="flex items-end justify-between gap-2">
+      <div className="flex flex-wrap items-end justify-between gap-2">
 
         <div>
           <p className="text-xs text-gray-500">
@@ -50,7 +48,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <span
-          className={`rounded-full px-2 py-1 text-xs font-medium ${
+          className={`shrink-0 rounded-full px-2 py-1 text-xs font-medium ${
             isUp
               ? "bg-red-50 text-red-600"
               : isDown

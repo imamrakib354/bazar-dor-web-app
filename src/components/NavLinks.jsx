@@ -12,14 +12,17 @@ const NavLinks = async () => {
   const categories = await res.json();
 
   return (
-    <nav className="border-t border-b border-gray-200 bg-[#F8FAF9]">
-      <div className="mx-auto flex max-w-7xl items-center gap-8 overflow-x-auto px-4 py-4">
+    <nav
+      aria-label="পণ্যের ক্যাটাগরি"
+      className="w-full border-y border-gray-200 bg-[#F8FAF9]"
+    >
+      <div className="mx-auto flex max-w-7xl items-center gap-5 overflow-x-auto px-4 py-3 sm:gap-7 sm:py-4 lg:gap-8">
 
         {categories.map((category) => (
           <Link
             key={category.id}
             href={`/category/${category.slug}`}
-            className="flex shrink-0 items-center gap-2 text-sm font-medium text-[#1F2937] transition-colors hover:text-[#05893E]"
+            className="flex shrink-0 items-center gap-2 whitespace-nowrap text-xs font-medium text-[#1F2937] transition-colors hover:text-[#05893E] sm:text-sm"
           >
             <span>{category.icon}</span>
             <span>{category.nameBn}</span>
