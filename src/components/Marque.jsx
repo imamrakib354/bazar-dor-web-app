@@ -16,7 +16,7 @@ const Marque = ({ products }) => {
                     {products.map((product) => (
                         <Link
                             key={product.id}
-                            href={`/product/${product.id}`}
+                            href={`/products/${product.id}`}
                             className="mr-10 flex shrink-0 items-center gap-2"
                         >
                             <span>{product.image}</span>

@@ -1,11 +1,10 @@
-
 import Banner from "@/components/Banner";
 import Marque from "@/components/Marque";
 import ProductSection from "@/components/ProductSection";
 
 const Home = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products"
+    "https://api.abcz.workers.dev/api/bazardor/products"
   );
 
   if (!res.ok) {

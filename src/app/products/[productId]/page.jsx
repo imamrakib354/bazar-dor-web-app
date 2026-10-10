@@ -1,0 +1,49 @@
+import { notFound } from "next/navigation";
+import ProductSummary from "@/components/ProductSummary";
+import PriceSummary from "@/components/PriceSummary";
+import MarketPriceTable from "@/components/MarketPriceTable";
+
+const ProductDetails = async ({ params }) => {
+  const { productId } = await params;
+
+  const res = await fetch(
+    `https://api.abcz.workers.dev/api/bazardor/products/${encodeURIComponent(productId)}`
+  );
+
+  if (res.status === 404) {
+    notFound();
+  }
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch product details");
+  }
+
+  const product = await res.json();
+
+  if (!product || !product.id) {
+    notFound();
+  }
+
+  return (
+    <div className="bg-[#F0F5F0] px-4 py-8">
+      <div className="mx-auto max-w-7xl">
+
+        <ProductSummary product={product} />
+
+        <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6">
+
+          <PriceSummary
+            markets={product.markets}
+            unit={product.unit}
+          />
+
+          <MarketPriceTable markets={product.markets} />
+
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetails;

@@ -1,4 +1,3 @@
-
 import ProductCard from "./ProductCard";
 
 const ProductSection = ({ title, subtitle, products, id }) => {

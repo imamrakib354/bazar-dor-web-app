@@ -16,8 +16,8 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link
-      href={`/product/${product.id}`}
-      className="block rounded-xl border border-gray-200 bg-white p-4 transition-all hover:-translate-y-1 hover:shadow-md"
+      href={`/products/${product.id}`}
+      className="block rounded-xl border border-gray-200 bg-white p-4 transition-all hover:-translate-y-1 hover:shadow-md hover:border-[#05893E]"
     >
       <div className="mb-5 flex items-center gap-3">
 
