@@ -1,10 +1,11 @@
+
 import Banner from "@/components/Banner";
 import Marque from "@/components/Marque";
 import ProductSection from "@/components/ProductSection";
 
 const Home = async () => {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/products"
+    "https://openapi.programming-hero.com/api/bazardor/products"
   );
 
   if (!res.ok) {
@@ -29,8 +30,7 @@ const Home = async () => {
 
       <Banner />
 
-      <div className="mx-auto max-w-7xl py-12">
-
+      <div className="mx-auto max-w-7xl px-4 py-12">
 
         <ProductSection
           title={
@@ -58,7 +58,6 @@ const Home = async () => {
           products={products}
           id="সব-পণ্য"
         />
-
 
       </div>
     </>

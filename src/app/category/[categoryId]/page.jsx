@@ -5,7 +5,7 @@ const CategoryPage = async ({ params }) => {
   const { categoryId } = await params;
 
   const categoryRes = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/categories"
+    "https://openapi.programming-hero.com/api/bazardor/categories"
   );
 
   if (!categoryRes.ok) {
@@ -23,7 +23,7 @@ const CategoryPage = async ({ params }) => {
   }
 
   const productRes = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${encodeURIComponent(categoryId)}`
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${encodeURIComponent(categoryId)}`
   );
 
   if (!productRes.ok) {

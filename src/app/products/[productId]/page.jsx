@@ -1,13 +1,26 @@
-import { notFound } from "next/navigation";
+
+import { notFound, redirect } from "next/navigation";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
+
 import ProductSummary from "@/components/ProductSummary";
 import PriceSummary from "@/components/PriceSummary";
 import MarketPriceTable from "@/components/MarketPriceTable";
 
 const ProductDetails = async ({ params }) => {
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/signin");
+  }
+
   const { productId } = await params;
 
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products/${encodeURIComponent(productId)}`
+    `https://openapi.programming-hero.com/api/bazardor/products/${encodeURIComponent(productId)}`
   );
 
   if (res.status === 404) {
