@@ -10,9 +10,9 @@ const Header = () => {
   });
 
   return (
-    <header className="bg-[#F8FAF9]">
+    <header className="bg-[#F8FAF9] sticky top-0 z-50 shadow-sm">
 
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-4 sm:py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 py-3 sm:gap-4 sm:py-4">
 
         {/* Logo link */}
         <Link

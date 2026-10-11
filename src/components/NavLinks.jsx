@@ -16,7 +16,7 @@ const NavLinks = async () => {
       aria-label="পণ্যের ক্যাটাগরি"
       className="w-full border-y border-gray-200 bg-[#F8FAF9]"
     >
-      <div className="mx-auto flex max-w-7xl items-center gap-5 overflow-x-auto px-4 py-3 sm:gap-7 sm:py-4 lg:gap-8">
+      <div className="mx-auto flex max-w-7xl items-center gap-5 overflow-x-auto py-3 sm:gap-7 sm:py-4 lg:gap-8">
 
         {categories.map((category) => (
           <Link

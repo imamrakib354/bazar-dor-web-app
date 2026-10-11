@@ -8,7 +8,7 @@ const Banner = () => {
   });
 
   return (
-    <section className="bg-[#F0F5F0] px-4 py-5 sm:py-6 lg:py-8">
+    <section className="bg-[#F0F5F0] py-5 sm:py-6 lg:py-8">
       <div className="mx-auto max-w-7xl">
 
         <div className="flex flex-col items-center justify-between gap-7 rounded-[24px] border border-[#DDE5DD] bg-[#F8FAF9] px-5 py-7 sm:gap-8 sm:rounded-[28px] sm:px-8 sm:py-9 lg:flex-row lg:px-10 lg:py-10">
